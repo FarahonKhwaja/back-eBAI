@@ -1,3 +1,7 @@
+/** @author Loïc Lemonsu */
+/** @author Pierre Liaubet */
+/** @author Philippe Roques-Geoffroy /*
+
 //// Packages pour lancer le serveur
 
 // Utilisation de colors pour la mise en couleur dans le log
