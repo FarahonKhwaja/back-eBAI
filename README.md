@@ -2,6 +2,8 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/aded628a1df99b5e9bd1/maintainability)](https://codeclimate.com/github/FarahonKhwaja/back-eBAI/maintainability)  [![Test Coverage](https://api.codeclimate.com/v1/badges/aded628a1df99b5e9bd1/test_coverage)](https://codeclimate.com/github/FarahonKhwaja/back-eBAI/test_coverage)
 
+[![Inline docs](http://inch-ci.org/github/FarahonKhwaja/back-eBAI.svg?branch=master)](http://inch-ci.org/github/FarahonKhwaja/back-eBAI)
+
 ## Utilisation des routes
 
 Documentation de l'API
