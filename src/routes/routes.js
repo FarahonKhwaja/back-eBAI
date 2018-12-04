@@ -2,23 +2,6 @@
 var express = require('express');
 var colors = require('colors/safe');
 
-var mongoose = require('mongoose');
-
-
-// Préparation accès
-var url = 'mongodb://localhost:27017/android';
-var options = {
-  useNewUrlParser: true
-};
-
-mongoose.connect(url, options, function(error) {
-  if (error) {
-    console.log(error);
-  }
-  console.log(colors.yellow("Connexion réussie !"));
-});
-var db = mongoose.connection;
-
 // Définition des modèles
 var annonceModel = require('../models/annonce.js');
 var userModel = require('../models/user.js');

@@ -11,6 +11,22 @@ var colors = require('colors/safe');
 var express = require('express');
 var app = express();
 
+// Configuration serveur mongodb
+var mongoose = require('mongoose');
+
+var url = 'mongodb://localhost:27017/android';
+var options = {
+  useNewUrlParser: true
+};
+
+mongoose.connect(url, options, function(error) {
+  if (error) {
+    console.log(error);
+  }
+  console.log(colors.yellow("Connexion réussie !"));
+});
+var db = mongoose.connection;
+
 
 // utilisation de bodyParser pour récupérer les données d'un POST par exemple
 var bodyParser = require('body-parser');
