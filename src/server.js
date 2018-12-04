@@ -33,6 +33,10 @@ app.use('/', router);
 // Port qui sera utilisé pour l'API REST
 var port = 8080;
 var addr = '0.0.0.0';
+
+/**
+ * lance le serveur sur l'adresse d'écoute et sur le port associé
+ */
 app.listen(port, addr);
 
 console.log(colors.yellow('Go on localhost:' + port + ' !'));
