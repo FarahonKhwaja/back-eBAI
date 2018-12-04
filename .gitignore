@@ -1,53 +1,3 @@
-
-Skip to content
-
-    Pull requests
-    Issues
-    Marketplace
-    Explore
-
-    @lolusab
-
-2,708
-75,979
-
-    36,078
-
-github/gitignore
-Code
-Pull requests 61
-Projects 0
-Insights
-gitignore/Node.gitignore
-ee2ae04 on 27 Oct
-@venatoria venatoria No need for .vscode line
-@stuartpb
-@shiftkey
-@TennyZhuang
-@venatoria
-@ro31337
-@melonmanchan
-@gouthamve
-@jucrouzet
-@cheddar
-@arcresu
-@tejashah88
-@sroberts
-@segayuu
-@rgbkrk
-@rsolomo
-@peat
-@noinkling
-@MikeRalphson
-@shtr0m
-@kerimdzhanov
-@joreyaesh
-@jenrik
-@jefrydco
-@izuzak
-@iamsebastian
-@rdela
-80 lines (56 sloc) 1.12 KB
 # Logs
 logs
 *.log
@@ -125,8 +75,8 @@ typings/
 # FuseBox cache
 .fusebox/
 
-#DynamoDB Local files 
-.dynamodb/ 
+#DynamoDB Local files
+.dynamodb/
 
     © 2018 GitHub, Inc.
     Terms
@@ -143,4 +93,3 @@ typings/
     About
 
 Press h to open a hovercard with more details.
-
