@@ -1,6 +1,6 @@
 /** @author Loïc Lemonsu */
 /** @author Pierre Liaubet */
-/** @author Philippe Roques-Geoffroy /*
+/** @author Philippe Roques-Geoffroy */
 
 //// Packages pour lancer le serveur
 
