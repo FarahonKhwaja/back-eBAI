@@ -1,4 +1,3 @@
-
 var express = require('express');
 var colors = require('colors/safe');
 
@@ -6,6 +5,13 @@ var colors = require('colors/safe');
 var annonceModel = require('../models/annonce.js');
 var userModel = require('../models/user.js');
 
+function AffichageErreur(err) {
+  res.status(500);
+  res.json({
+    "message": err
+  })
+  console.log(colors.bgMagenta(err));
+}
 
 // Récupération d'un routeur
 var router = express.Router();
@@ -34,10 +40,8 @@ router.route('/users')
       username: user.username
     }).exec(function(err, usercheck) {
 
-      if(err){
-        res.status(500);
-        res.json({"message" : err})
-        console.log(colors.bgMagenta(err));
+      if (err) {
+        AffichageErreur(err);
       }
 
       if (!usercheck) {
@@ -51,10 +55,8 @@ router.route('/users')
           }
         }]).exec(function(err, reponse) {
 
-          if(err){
-            res.status(500);
-            res.json({"message" : err})
-            console.log(colors.bgMagenta(err));
+          if (err) {
+            AffichageErreur(err);
           }
 
           if (!reponse.length) {
@@ -64,8 +66,8 @@ router.route('/users')
           }
 
           userModel.create(user, function(err, userInsere) {
-            if (err){
-              console.log(err);
+            if (err) {
+              AffichageErreur(err);
             }
             console.log(userInsere);
             res.json(userInsere);
@@ -93,13 +95,11 @@ router.route('/usercheck')
       pwd: user.pwd
     }).exec(function(err, usercheck) {
 
-      if(err){
-        res.status(500);
-        res.json({"message" : err})
-        console.log(colors.bgMagenta(err));
+      if (err) {
+        AffichageErreur(err);
       }
 
-      if (!usercheck){
+      if (!usercheck) {
         usercheck = {};
       }
       res.json(usercheck);
@@ -118,10 +118,8 @@ router.route('/user/:id')
       _id: 0
     }).exec(function(err, utilisateur) {
 
-      if(err){
-        res.status(500);
-        res.json({"message" : err})
-        console.log(colors.bgMagenta(err));
+      if (err) {
+        AffichageErreur(err);
       }
 
       res.json(utilisateur);
@@ -137,10 +135,8 @@ router.route('/annonces')
       _id: 0
     }).exec(function(err, annonces) {
 
-      if(err){
-        res.status(500);
-        res.json({"message" : err})
-        console.log(colors.bgMagenta(err));
+      if (err) {
+        AffichageErreur(err);
       }
 
       res.json(annonces);
@@ -159,10 +155,8 @@ router.route('/annonces')
       }
     }]).exec(function(err, reponse) {
 
-      if(err){
-        res.status(500);
-        res.json({"message" : err})
-        console.log(colors.bgMagenta(err));
+      if (err) {
+        AffichageErreur(err);
       }
 
       if (!reponse.length) {
@@ -173,10 +167,8 @@ router.route('/annonces')
 
       annonceModel.create(annonce, function(err, annonceInsere) {
 
-        if(err){
-          res.status(500);
-          res.json({"message" : err})
-          console.log(colors.bgMagenta(err));
+        if (err) {
+          AffichageErreur(err);
         }
 
         console.log(annonceInsere);
@@ -195,10 +187,8 @@ router.route('/annonce/:id')
       _id: 0
     }).exec(function(err, annonce) {
 
-      if(err){
-        res.status(500);
-        res.json({"message" : err})
-        console.log(colors.bgMagenta(err));
+      if (err) {
+        AffichageErreur(err);
       }
 
       res.json(annonce);
@@ -220,10 +210,8 @@ router.route('/annonce/:id')
 
     annonceModel.update(condition, updates, function(err, resultat) {
 
-      if(err){
-        res.status(500);
-        res.json({"message" : err})
-        console.log(colors.bgMagenta(err));
+      if (err) {
+        AffichageErreur(err);
       }
 
       res.json(resultat);
@@ -231,4 +219,4 @@ router.route('/annonce/:id')
     })
   });
 
-  module.exports = router;
+module.exports = router;
