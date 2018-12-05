@@ -219,4 +219,27 @@ router.route('/annonce/:id')
     })
   });
 
+//définition de la route pour /searchannonces
+router.route('/searchannonces')
+.post(function(req, res){
+  var search = req.body;
+
+  var query = {};
+
+  if(search.user !== undefined){
+    query.utilisateurCreation = search.user;
+  }
+  if(search.keyword !== undefined){
+    query.$text = {$search : search.keyword};
+  }
+
+  annonceModel.find(query).exec(function(err, resp){
+    if(err){
+      AffichageErreur(err);
+    }
+    console.log(resp);
+    res.json(resp);
+  });
+});
+
 module.exports = router;

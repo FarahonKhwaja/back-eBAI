@@ -19,5 +19,17 @@ var annonceSchema = mongoose.Schema({
   utilisateurEnchere: String
 });
 
+mongoose.set('useCreateIndex', true);
+
+annonceSchema.index({"name": "text"});
+
+annonceSchema.on('index', function(error){
+  if(error){
+    console.log(error);
+  }else{
+    console.log("index OK");
+  }
+});
+
 // Association du schéma à un model et export pour utilisation
 module.exports = mongoose.model('annonce', annonceSchema);

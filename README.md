@@ -229,3 +229,18 @@ retourne si l'annonce a été modifié au format :
   "n": 1
 }
 ```
+
+### /searchannonces
+
+#### POST
+
+Recherche des annonce sur les critères passés en entré sous la forme :
+
+```json
+{
+  "keyword": "keyword",
+  "user": "user"
+}
+```
+
+retourne une liste d'annonces qui correspondent au critères de recherche.
