@@ -1,6 +1,7 @@
 // Package pour l'utilisation de mongoose
 var mongoose = require('mongoose');
 require('mongoose-double')(mongoose);
+require('mongoose-long')(mongoose);
 
 var SchemaTypes = mongoose.Schema.Types;
 
@@ -10,7 +11,7 @@ var annonceSchema = mongoose.Schema({
   nom: String,
   description: String,
   prix_min: SchemaTypes.Double,
-  dateCreation: String,
+  dateCreation: SchemaTypes.Long,
   utilisateurCreation: String,
   duree: Number,
   photo: String,
