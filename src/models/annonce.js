@@ -20,9 +20,7 @@ var annonceSchema = mongoose.Schema({
   utilisateurEnchere: String
 });
 
-mongoose.set('useCreateIndex', true);
-
-annonceSchema.index({"name": "text"});
+annonceSchema.index({"nom": "text"});
 
 annonceSchema.on('index', function(error){
   if(error){

@@ -25,6 +25,9 @@ mongoose.connect(url, options, function(error) {
   }
   console.log(colors.yellow("Connexion réussie !"));
 });
+
+mongoose.set('debug', true);
+
 var db = mongoose.connection;
 
 
