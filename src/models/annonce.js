@@ -11,7 +11,7 @@ var annonceSchema = mongoose.Schema({
   nom: String,
   description: String,
   prix_min: SchemaTypes.Double,
-  dateCreation: SchemaTypes.Long,
+  dateCreation: Number,
   utilisateurCreation: String,
   duree: Number,
   photo: String,
