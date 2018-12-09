@@ -20,6 +20,27 @@ var router = express.Router();
 router.use(function(req, res, next) {
   console.log("\t" + colors.green(req.method + " " + req.url));
 
+  // Vérifier les annonces
+  annonceModel.find({
+    etat: "En cours"
+  }).exec(function(err, annonces) {
+    if (err) {
+      AffichageErreur(err);
+    }
+    annonces.forEach(function(annonce) {
+      if ((annonce.dateCreation + (annonce.duree * 60)) < Date.now()) {
+        annonce.etat = "Terminé";
+
+        annonce.save(function(err, annonceupdate) {
+          if (err) {
+            AffichageErreur(err);
+          }
+          console.log("Désactivation de  : " + annonceupdate.id);
+        })
+      }
+    });
+  });
+
   // Pour ne pas s'arreter à cette méthode mais continuer sur les prochaines
   next();
 });
@@ -221,25 +242,27 @@ router.route('/annonce/:id')
 
 //définition de la route pour /searchannonces
 router.route('/searchannonces')
-.post(function(req, res){
-  var search = req.body;
+  .post(function(req, res) {
+    var search = req.body;
 
-  var query = {};
+    var query = {};
 
-  if(search.user !== undefined){
-    query.utilisateurCreation = search.user;
-  }
-  if(search.keyword !== undefined){
-    query.$text = {$search : search.keyword};
-  }
-
-  annonceModel.find(query).exec(function(err, resp){
-    if(err){
-      AffichageErreur(err);
+    if (search.user !== undefined) {
+      query.utilisateurCreation = search.user;
     }
-    console.log(resp);
-    res.json(resp);
+    if (search.keyword !== undefined) {
+      query.$text = {
+        $search: search.keyword
+      };
+    }
+
+    annonceModel.find(query).exec(function(err, resp) {
+      if (err) {
+        AffichageErreur(err);
+      }
+      console.log(resp);
+      res.json(resp);
+    });
   });
-});
 
 module.exports = router;
