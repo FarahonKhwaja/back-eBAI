@@ -221,7 +221,8 @@ router.route('/annonce/:id')
     var annonceAMAJ = req.body;
 
     var condition = {
-      "id": annonceAMAJ.id
+      "id": annonceAMAJ.id,
+      "etat" : "En cours"
     };
 
     var updates = {
