@@ -28,7 +28,7 @@ router.use(function(req, res, next) {
       AffichageErreur(err);
     }
     annonces.forEach(function(annonce) {
-      if ((annonce.dateCreation + (annonce.duree * 60)) < Date.now()) {
+      if ((annonce.dateCreation + (annonce.duree * 60 * 1000)) < Date.now()) {
         annonce.etat = "Terminé";
 
         annonce.save(function(err, annonceupdate) {
